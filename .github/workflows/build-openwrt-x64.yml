@@ -16,7 +16,7 @@ on:
     branches:
       - master
     paths:
-      - 'n1.config'
+      - 'x64.config'
   schedule:
     - cron: 0 8 * * 5
   watch:

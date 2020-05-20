@@ -89,7 +89,7 @@ jobs:
 
     - name: Make config
       run: |
-        cd openwrt
+        cd  openwrt
         sed -i '$d' target/linux/armvirt/image/Makefile
         echo -e 'define Device/Phicomm-n1
         DEVICE_MODEL := Phicomm-n1

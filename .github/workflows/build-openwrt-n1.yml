@@ -17,7 +17,6 @@ on:
       - master
     paths:
       - 'n1.config'
-      - 'build-openwrt-n1.yml'
   push:
     branches:
       - master

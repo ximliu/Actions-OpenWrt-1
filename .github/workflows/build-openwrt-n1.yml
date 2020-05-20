@@ -82,6 +82,31 @@ jobs:
       uses: P3TERX/debugger-action@master
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
+    - name: Make config
+      run: |
+        cd lede
+        sed -i '$d' target/linux/armvirt/image/Makefile
+        echo -e 'define Device/Phicomm-n1
+        DEVICE_MODEL := Phicomm-n1
+          DEVICE_PACKAGES := \
+            cypress-firmware-43430-sdio \
+            cypress-nvram-43430-sdio-rpi-3b \
+            cypress-firmware-43455-sdio \
+            cypress-nvram-43455-sdio-rpi-3b-plus \
+            kmod-brcmfmac wpad-basic \
+            htop lscpu iperf3 fdisk lsblk parted blkid losetup \
+            kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat ntfs-3g \
+            e2fsprogs dosfstools ntfsprogs_ntfs-3g \
+            kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
+            kmod-usb-net kmod-usb-net-asix kmod-usb-net-asix-ax88179 \
+            luci-app-samba4 luci-app-cifs-mount luci-app-dockerman \
+            luci-theme-bootstrap-mod
+        endef
+        ifeq ($(SUBTARGET),64)
+          TARGET_DEVICES += Phicomm-n1
+        endif\n
+        $(eval $(call BuildImage))' >> target/linux/armvirt/image/Makefile
+
     - name: Download package
       id: package
       run: |

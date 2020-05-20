@@ -17,10 +17,6 @@ on:
       - master
     paths:
       - 'n1.config'
-  push:
-    branches:
-      - master
-    paths:
       - 'build-openwrt-n1.yml'
   schedule:
     - cron: 0 8 * * 5

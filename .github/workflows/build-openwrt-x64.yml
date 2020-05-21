@@ -17,6 +17,7 @@ on:
       - master
     paths:
       - 'x64.config'
+      - '.github/workflows/build-openwrt-x64.yml'
   schedule:
     - cron: 0 8 * * 5
   watch:

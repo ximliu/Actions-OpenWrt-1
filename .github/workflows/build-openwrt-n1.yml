@@ -17,7 +17,7 @@ on:
       - master
     paths:
       - 'n1.config'
-      - 'build-openwrt-n1.yml'
+      - '.github/workflows/build-openwrt-n1.yml'
   schedule:
     - cron: 0 8 * * 5
   watch:

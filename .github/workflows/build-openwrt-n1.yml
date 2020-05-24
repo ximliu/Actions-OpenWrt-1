@@ -76,6 +76,7 @@ jobs:
         git clone https://github.com/liwenjie119/luci-app-koolproxyR package/myapp/luci-app-koolproxyR
         sed -i 's#ntfs-3g#antfs-mount#g' package/lean/automount/Makefile
         sed -i 's_#src-git_src-git_g' feeds.conf.default
+        sed -i 's#dbef423c005de25effdf1acfcf408927f70908e1#aaa165222e172233b786fc053ec8d6a2ae1fa8ef#g package/myapp/zzu-minieap-openwrt/Makefile
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -131,8 +132,8 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        #make -j$(nproc) || make -j1 || make -j1 V=s
-        make -j1 V=s
+        make -j$(nproc) || make -j1 || make -j1 V=s
+        #make -j1 V=s
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::set-env name=DEVICE_NAME::_$(cat DEVICE_NAME)"

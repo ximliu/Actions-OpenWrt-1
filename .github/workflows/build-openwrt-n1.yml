@@ -74,7 +74,7 @@ jobs:
         git clone https://github.com/2512500960/zzu-minieap-openwrt package/myapp/zzu-minieap-openwrt
         git clone https://github.com/tty228/luci-app-serverchan package/myapp/luci-app-serverchan
         git clone https://github.com/liwenjie119/luci-app-koolproxyR package/myapp/luci-app-koolproxyR
-        sed -i 's#ntfs-3g#antfs-mount#g' package/lean/automount/Makefile
+        #sed -i 's#ntfs-3g#antfs-mount#g' package/lean/automount/Makefile
         sed -i 's_#src-git_src-git_g' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
@@ -137,6 +137,9 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::set-env name=DEVICE_NAME::_$(cat DEVICE_NAME)"
         echo "::set-env name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
+    - name: Check space usage
+      if: (!cancelled())
+      run: df -hT
 
     - name: Upload bin directory
       uses: actions/upload-artifact@master

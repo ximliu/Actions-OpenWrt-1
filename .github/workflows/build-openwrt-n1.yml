@@ -74,7 +74,7 @@ jobs:
         git clone https://github.com/2512500960/zzu-minieap-openwrt package/myapp/zzu-minieap-openwrt
         git clone https://github.com/tty228/luci-app-serverchan package/myapp/luci-app-serverchan
         git clone https://github.com/liwenjie119/luci-app-koolproxyR package/myapp/luci-app-koolproxyR
-        #sed -i 's#ntfs-3g#antfs-mount#g' package/lean/automount/Makefile
+        sed -i 's#ntfs-3g#antfs-mount#g' package/lean/automount/Makefile
         sed -i 's_#src-git_src-git_g' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
@@ -105,8 +105,8 @@ jobs:
             cypress-nvram-43455-sdio-rpi-3b-plus \
             kmod-brcmfmac wpad-basic \
             htop lscpu iperf3 fdisk lsblk parted blkid losetup \
-            kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat ntfs-3g \
-            e2fsprogs dosfstools ntfsprogs_ntfs-3g \
+            kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat \
+            e2fsprogs dosfstools \
             kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
             kmod-usb-net kmod-usb-net-asix kmod-usb-net-asix-ax88179 \
             luci-app-samba4 luci-app-cifs-mount luci-app-dockerman \

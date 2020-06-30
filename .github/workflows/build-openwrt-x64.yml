@@ -69,8 +69,6 @@ jobs:
         sed -i 's#ntfs-3g#antfs-mount#g' package/lean/automount/Makefile
         sed -i '5 s/#//' ./feeds.conf.default
         sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-        #临时修复baidupcs-go
-        sed -i '65c PKG_SOURCE_URL:=https://bt.shinenet.cn/down/baidupcsweb/down/' package/lean/baidupcs-web/Makefile
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 

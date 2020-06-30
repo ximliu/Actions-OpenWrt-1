@@ -82,8 +82,6 @@ jobs:
         sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
         # n1 install program
         git clone https://github.com/tuanqing/install-program package/install-program
-        #临时修复baidupcs-go
-        sed -i '65c PKG_SOURCE_URL:=https://bt.shinenet.cn/down/baidupcsweb/down/' package/lean/baidupcs-web/Makefile
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 

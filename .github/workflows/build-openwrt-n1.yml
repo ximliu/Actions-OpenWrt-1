@@ -110,13 +110,15 @@ jobs:
             cypress-nvram-43430-sdio-rpi-3b \
             cypress-firmware-43455-sdio \
             cypress-nvram-43455-sdio-rpi-3b-plus \
-            kmod-brcmfmac wpad-basic bash vim install-program \
+            kmod-brcmfmac wpad-basic \
+            bash vim install-program lm-sensors lm-sensors-detect \
             htop lscpu iperf3 fdisk lsblk parted blkid losetup \
-            kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat \
+            kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat kmod-fs-antfs \
             e2fsprogs dosfstools \
             kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
             kmod-usb-net kmod-usb-net-asix kmod-usb-net-asix-ax88179 \
-            luci-app-samba4 luci-app-cifs-mount luci-app-dockerman \
+            kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 \
+            luci-app-samba4 luci-app-cifs-mount luci-app-docker \
             luci-theme-bootstrap-mod
         endef
         ifeq ($(SUBTARGET),64)
